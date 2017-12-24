@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Bakery</title>
+	</head>
+
+
+	<body>
+	
+		<table border=1>
+			<tr>
+				<th>Item</th>
+				<th>Price</th>
+				<th>Quantity</th>
+			</tr>
+
+			<tr>
+				<td><input type=radio name=item id=ip1 value=muffin onclick=calc(this) >Muffin</td>
+	 			<td>Rs.10/-</td>
+				<td><input type=number id=op1 disabled></td>
+			</tr>
+	
+			<tr>
+				<td><input type=radio name=item id=ip1 value=cookie onclick=calc(this) ><img src=cookie.jpg width=50px height=50px ></td>
+	 			<td>Rs.20/-</td>
+				<td><input type=number id=op2 disabled></td>
+			</tr>
+
+		
+			<tr><td>Total: <input type=number id=op disabled></td></tr><br>
+
+
+		</table>
+
+			<input type=button value=Submit onclick=total()><br>	
+	<script>
+
+		function calc(ip)	{
+
+			//ip1=document.getElementById("ip1").value;
+			//ip2=document.getElementById("ip2").value;
+			op=document.getElementById("op");
+			op1=document.getElementById("op1");
+			op2=document.getElementById("op2");
+			
+			console.log(ip.value);
+			
+			if(ip.value=="muffin")	{
+				op1.disabled=false;
+				op2.disabled=true;
+				op2.value="";
+				
+			}
+			
+			else if(ip.value=="cookie")	{
+				op2.disabled=false;
+				op1.disabled=true;
+				op1.value="";
+				
+			}
+
+			
+
+		}
+
+		function total()	{
+			op=document.getElementById("op");
+			op1=document.getElementById("op1");
+			op2=document.getElementById("op2");			
+			if(!(op1.disabled))	{
+				if(parseInt(op1.value)!=parseFloat(op1.value))	{
+					alert("Fraction Values are not allowed");
+					return;
+				}
+				op.value=parseInt(op1.value)*10;
+			}
+			else if(!(op2.disabled))	{
+				if(parseInt(op2.value)!=parseFloat(op2.value))	{
+					alert("Fraction Values are not allowed");
+					return;
+				}
+				op.value=parseInt(op2.value)*20;
+			}
+			else
+				alert("Please select an Item first!");
+		}
+
+
+
+	</script>
+
+	</body>
+
+</html>
