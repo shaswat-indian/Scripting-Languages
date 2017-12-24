@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Calculator</title>
+	</head>
+
+
+	<body>
+
+	First Number: <input type=number id=ip1><br>
+	Second Number: <input type=number id=ip2><br>
+	Result: <input type=number id=op disabled><br>
+
+	<input type=button name=cal value=add onclick=calc(this) ><br>
+	<input type=button name=cal value=mul onclick=calc(this) ><br>
+
+	<script>
+
+		function calc(button)	{
+
+			ip1=document.getElementById("ip1").value;
+			ip2=document.getElementById("ip2").value;
+			op=document.getElementById("op");
+			
+
+			if(ip1=="" || ip2=="")	{
+				alert("Null Values not Allowed");
+				return;
+			}
+		
+			if(ip1<0 || ip2<0)	{
+				alert("Negative Values not Allowed");
+				return;
+			}
+			
+			if(button.value=="add")	{
+				var res=parseInt(ip1)+parseInt(ip2);
+				op.value=res;
+			}
+
+			if(button.value=="mul")	{
+				var res=parseInt(ip1)*parseInt(ip2);
+				op.value=res;
+			}
+
+		}
+	</script>
+
+	</body>
+
+</html>
