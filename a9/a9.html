@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Pizza</title>
+	</head>
+
+
+	<body>
+		<h1 onmouseover=setpic() onmouseout=document.getElementById("pizzapic").innerHTML="">Pizza</h1><br>
+
+		<select id=options>
+			<option>Mexican Veggie Pizza</opiton>
+		</select><br>
+
+		<input type=text placeholder="Pizza Name" id=ip><br>
+		<input type=button value="Add Pizza" onclick=addpizza()><br>
+
+		<p id=pizzapic></p><br>
+
+		
+
+		<script>
+
+			function setpic()	{
+				document.getElementById("pizzapic").innerHTML="<img src=pizza.jpg width=300px height=200px>";
+
+			}
+
+			function addpizza()	{
+
+				list=document.getElementById("options");
+				newpizza=document.getElementById("ip");
+
+				if(newpizza.value=="")	{
+					alert("Name cannot be Blank");
+					return;
+				}
+
+				for(i=0;i<list.length;i++)	{
+					if(list.options[i].innerHTML==newpizza.value)	{
+						alert("Pizza already in List");
+						newpizza.value="";
+						return;
+					}
+				}
+				
+				newp=document.createElement("option");
+				newp.innerHTML=newpizza.value;
+				list.appendChild(newp);
+				alert("Pizza Successfully Added");
+				newpizza.value="";
+				
+
+
+			}
+
+
+		</script>
+
+		
+	</body>
+
+
+
+</html>
