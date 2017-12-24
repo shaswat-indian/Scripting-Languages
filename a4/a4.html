@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Marks</title>
+	</head>
+
+
+	<body>
+	
+		<table border=1>
+			<tr>
+				<th>Subject</th>
+				<th>Marks</th>
+				<th>Grade</th>
+			</tr>
+
+			<tr>
+				<td>First Subject:</td>
+	 			<td><input type=number name=ip1 id=ip1 onkeyup=calc(this) ></td>
+				<td><input type=text id=op1 disabled></td>
+			</tr>
+	
+			<tr>
+				<td>Second Subject:</td>
+				<td><input type=number name=ip2 id=ip2 onkeyup=calc(this) ></td>
+				<td><input type=text id=op2 disabled></td>
+			</tr>
+
+		
+			<tr><td>Total: <input type=number id=op disabled></td></tr><br>
+
+
+
+		</table>
+	
+	<script>
+
+		function calc(ip)	{
+
+			ip1=document.getElementById("ip1").value;
+			ip2=document.getElementById("ip2").value;
+			op=document.getElementById("op");
+			op1=document.getElementById("op1");
+			op2=document.getElementById("op2");
+			
+
+			if(ip1=="" || ip2=="")	{
+				alert("Null Values not Allowed");
+				return;
+			}
+		
+			if(ip1<0 || ip2<0 || ip1>100 || ip2>100)	{
+				alert("Marks should be between 0 to 100");
+				return;
+			}
+			
+			if(ip.name=="ip1")	{
+				op1.value=getgrade(ip1);
+			}
+			
+			else if(ip.name=="ip2")	{
+				op2.value=getgrade(ip2);
+			}
+
+			op.value=parseInt(ip1)+parseInt(ip2);
+			
+
+		}
+
+
+		function getgrade(ip)	{
+			if(ip>=90)
+				return 'S';
+			else if(ip>=75)
+				return 'A';
+			else if(ip>=60)
+				return 'B';
+			else if(ip>=50)
+				return 'C';
+			else if(ip>=40)
+				return 'D';
+			else
+				return 'F';
+		}
+
+	</script>
+
+	</body>
+
+</html>
