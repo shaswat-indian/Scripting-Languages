@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Bank-ATM</title>
+	</head>
+
+
+	<body>
+		<h2>ATM</h2><br>
+		<h3>Balance: {{balance}}</h3><br>
+		<h4>Number of Transactions: {{transaction}}</h4><br>
+		<p>{{msg}}</p><br>
+
+		<form id=regform method=POST action={{url_for('atm')}}>
+			Amount: <input type=number name=amount placeholder=Amount id=amount><br>
+			<input type=submit name=action value=Withdraw onclick="return validate(this)"><br>
+			<input type=submit name=action value=Deposit onclick="return validate(this)"><br>
+
+		</form>
+
+
+
+		<script>
+
+			function validate(button)	{
+
+				form=document.getElementById("regform");
+				amount=form["amount"].value;
+
+				if(amount=="")	{
+					alert("Amount cannot be Blank!");
+					return false;
+				}
+
+				if(parseInt(amount)<0)	{
+					alert("Amount cannot be Negatve!");
+					return false;
+				}
+
+				if(button.value=="Withdraw" && parseInt(amount)>5000)	{
+					alert("Cannot Withdraw more than Rs.5000/-");
+					return false;
+				}
+	
+				if(button.value=="Deposit" && parseInt(amount)>10000)	{
+					alert("Cannot Deposit more than Rs.10000/-");
+					return false;
+				}
+
+				return true;
+			}
+
+		</script>
+
+	</body>
+
+
+
+
+
+</html>
