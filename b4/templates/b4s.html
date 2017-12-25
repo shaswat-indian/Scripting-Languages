@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Grades</title>
+	</head>
+
+
+	<body>
+		<h1 style=text-align:center>Student Report</h1>
+		<h3>Name : {{uname}}</h3><br>
+		<h3>USN: : {{usn}}</h3><br>
+		<h3>DOB : {{dob}}</h3><br>
+
+
+		<table border=1>
+
+			<tr>
+				<th>Subject</th>
+				<th>Marks</th>
+				<th>Credits</th>
+				<th>Grade</th>
+			</tr>
+
+			{%for i in cart %}
+			<tr>
+				<td>Subject {{i["no"]}}</td>
+				<td>{{i["marks"]}}</td>
+				<td>{{i["credits"]}}</td>
+				<td>{{i["grade"]}}</td>
+			</tr>
+			{%endfor%}
+
+
+		</table><br>
+		
+		<h3>SGPA: {{sgpa}}</h3><br>
+
+		
+	</body>
+
+
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Marks</title>
+	</head>
+
+
+	<body>
+	
+		<form id=regform method=POST action={{url_for('student')}}>
+			
+			Name: <input type=text name=uname id=uname required><br>
+			USN: <input type=text name=usn id=usn placeholder="1MS15IS100" required><br>
+			DOB: <input type=date min="1992-01-01" max="1998-12-31" name=dob required><br><br>
+
+			Subject 1: <input type=number name=marks[] placeholder="Marks(0-100)" min=0 max=100 required> <input type=number name=credits[] placeholder="Credits(1-4)" min=1 max=4 required><br>
+			Subject 2: <input type=number name=marks[] placeholder="Marks(0-100)" min=0 max=100 required> <input type=number name=credits[] placeholder="Credits(1-4)" min=1 max=4 required><br>
+			Subject 3: <input type=number name=marks[] placeholder="Marks(0-100)" min=0 max=100 required> <input type=number name=credits[] placeholder="Credits(1-4)" min=1 max=4 required><br>
+			Subject 4: <input type=number name=marks[] placeholder="Marks(0-100)" min=0 max=100 required> <input type=number name=credits[] placeholder="Credits(1-4)" min=1 max=4 required><br>
+			Subject 5: <input type=number name=marks[] placeholder="Marks(0-100)" min=0 max=100 required> <input type=number name=credits[] placeholder="Credits(1-4)" min=1 max=4 required><br><br>
+
+			<input type=submit onclick="return validate()" value=Submit>
+		</form>
+
+
+		<script>
+
+			function validate()	{
+
+				form=document.getElementById("regform");
+				uname=form["uname"];
+				usn=form["usn"];
+				dob=form["dob"];
+				marks=form["marks[]"];
+				credits=form["credits[]"];
+
+				if(!(/^1ms[0-9][0-9](cs|is)\d{3}$/i.test(usn.value)))	{			
+					alert("Enter a Valid USN");
+					return false;
+				}
+
+//If Date Validation is not supported by the Browser, then try this!
+/*				
+				d=dob.value.split('-');
+				year=d[0];
+				month=d[1]-1;
+				day=d[2];				
+				maxdate=Date.parse("1998","11","31");
+				mindate=Date.parse("1992","00","01");
+				mydate=Date.parse(year,month,day);
+				if(mydate>maxdate || mydate<mindate)	{
+					alert("Date should be between 1992 to 1998 Only");
+					return false;
+				}
+*/				
+				
+				for(i=0;i<marks.length;i++)	{
+					if((parseInt(marks[i].value))<0 || (parseInt(marks[i].value))>100)	{
+						alert("Marks should be in the range 0 to 100");
+						return false;
+					}
+				}
+
+				for(i=0;i<credits.length;i++)	{
+					if((parseInt(credits[i].value))<0 || (parseInt(marks[i].value))>100)	{
+						alert("Credits should be in the range 1 to 4");
+						return false;
+					}
+
+				}
+				return true;
+
+			}
+
+
+		</script>
+	
+
+	</body>
+
+
+</html>
